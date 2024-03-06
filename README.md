@@ -4,7 +4,7 @@ This project is a Bookstore API developed using Spring Boot. It provides endpoin
 
 ## Endpoints
 
-### Get Book Categories
+### Search for Books
 
 - **URL:** `/v1/books/search`
 - **Method:** POST
