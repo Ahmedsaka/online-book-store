@@ -1,11 +1,11 @@
-package com.interswitch.onlinebookstore;
+package com.interswitch.onlinebookstore.utilities;
 
 import lombok.experimental.UtilityClass;
 
 import java.util.Random;
 
 @UtilityClass
-public class Utility {
+public class BookInventoryUtil {
     Random random = new Random();
 
     public static String generateISBN(String prefix, int length) {
@@ -25,4 +25,6 @@ public class Utility {
 
         return isbn.toString();
     }
+
+
 }

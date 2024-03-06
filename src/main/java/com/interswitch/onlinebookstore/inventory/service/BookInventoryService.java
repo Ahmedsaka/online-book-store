@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.Year;
 
 @Service
@@ -31,8 +32,10 @@ public class BookInventoryService {
                     .title(bookInventory.getTitle())
                     .author(bookInventory.getAuthor())
                     .isbnCode(bookInventory.getIsbnCode())
-                    .genre(bookInventory.getGenre())
+                    .genre(bookInventory.getGenre().name().toLowerCase())
                     .yearOfPublication(Year.of(bookInventory.getYearOfPublication()))
+                    .price(BigDecimal.valueOf(bookInventory.getPrice()).divide(BigDecimal.valueOf(100L), 2, 2))
+                    .stock(bookInventory.getStock())
                     .build();
         }
     }

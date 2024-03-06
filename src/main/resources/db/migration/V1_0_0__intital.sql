@@ -7,7 +7,9 @@ CREATE TABLE IF NOT EXISTS `book_inventory` (
     `genre` VARCHAR(50) NOT NULL,
     `created_at` TIMESTAMP NOT NULL,
     `updated_at` TIMESTAMP NOT NULL,
-    `identifier` VARCHAR(50) NOT NULL
+    `identifier` VARCHAR(50) NOT NULL,
+    `price` BIGINT NOT NULL,
+    `stock` INT NOT NULL
 );
 
 CREATE UNIQUE INDEX `idx_book_identifier` ON `book_inventory` (`identifier`);

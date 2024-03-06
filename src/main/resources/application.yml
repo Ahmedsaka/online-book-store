@@ -6,10 +6,12 @@ spring:
     username: appuser
     password: Alpha.02$
   jpa:
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
+  main:
+    allow-circular-references: true
 
 app:
   isbn:
@@ -17,3 +19,13 @@ app:
     length: 13
   seed:
     database: false
+  security:
+    authentication:
+      basic:
+        enable: true
+        username: user
+        password: password
+      jwt:
+        enable: false
+        username: user
+        password: password

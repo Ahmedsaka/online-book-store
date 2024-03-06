@@ -1,6 +1,7 @@
 package com.interswitch.onlinebookstore.inventory.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.interswitch.onlinebookstore.validator.annotation.ValidGenre;
 import com.interswitch.onlinebookstore.validator.annotation.ValidYear;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,7 +16,8 @@ public class SearchRequest {
     private int pageNumber = 0;
     private String title;
     private String author;
-    @ValidYear
+    @ValidYear(message = "Year of publication is invalid")
     private Integer yearOfPublication;
+    @ValidGenre(message = "Genre is invalid")
     private String genre;
 }

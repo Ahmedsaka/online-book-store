@@ -1,39 +1,43 @@
 package com.interswitch.onlinebookstore.inventory.entity;
 
+import com.interswitch.onlinebookstore.commons.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "book_inventory")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class BookInventory {
+public class BookInventory extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     @Column(name = "title")
     private String title;
-    @Column(name = "identifier")
-    private String identifier;
     @Column(name = "isbn_code")
     private String isbnCode;
     @Column(name = "author")
     private String author;
     @Column(name = "genre")
-    private String genre;
+    @Enumerated(EnumType.STRING)
+    private Genre genre;
     @Column(name = "year_of_publication")
     private int yearOfPublication;
-    @Column(name = "created_at")
+    @Column(name = "price")
+    private long price;
+    @Column(name = "stock")
+    private int stock;
+    @Column(name = "identifier")
+    private String identifier;
     @CreatedDate
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
     @Column(name = "updated_at")
     @LastModifiedDate

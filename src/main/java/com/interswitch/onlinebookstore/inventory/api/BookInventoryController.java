@@ -5,6 +5,7 @@ import com.interswitch.onlinebookstore.inventory.model.SearchRequest;
 import com.interswitch.onlinebookstore.inventory.service.BookInventoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,8 +14,8 @@ import org.springframework.web.bind.annotation.*;
 public class BookInventoryController {
     private final BookInventoryService bookInventoryService;
 
-    @GetMapping("/search")
-    public Page<BookInventoryResponse> search(@ModelAttribute SearchRequest searchRequest) {
+    @PostMapping("/search")
+    public Page<BookInventoryResponse> search(@Validated @RequestBody SearchRequest searchRequest) {
         return bookInventoryService.search(searchRequest);
     }
 }

@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.Year;
 
 @Data
@@ -18,4 +19,6 @@ public class BookInventoryResponse {
     private String author;
     private String genre;
     private Year yearOfPublication;
+    private BigDecimal price;
+    private int stock;
 }
