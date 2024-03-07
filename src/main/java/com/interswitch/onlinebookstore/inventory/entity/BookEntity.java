@@ -1,21 +1,23 @@
 package com.interswitch.onlinebookstore.inventory.entity;
 
-import com.interswitch.onlinebookstore.commons.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Objects;
+import java.util.UUID;
 
-@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "book_inventory")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class BookInventory extends BaseEntity {
+public class BookEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -26,8 +28,7 @@ public class BookInventory extends BaseEntity {
     @Column(name = "author")
     private String author;
     @Column(name = "genre")
-    @Enumerated(EnumType.STRING)
-    private Genre genre;
+    private String genre;
     @Column(name = "year_of_publication")
     private int yearOfPublication;
     @Column(name = "price")
@@ -42,6 +43,15 @@ public class BookInventory extends BaseEntity {
     @Column(name = "updated_at")
     @LastModifiedDate
     private LocalDateTime updatedAt;
+
+    @PrePersist
+    void setUuid() {
+        if (Objects.isNull(identifier) || StringUtils.isBlank(identifier)) {
+            identifier = UUID.randomUUID().toString();
+        }
+        if (Objects.isNull(createdAt)) createdAt = LocalDateTime.now();
+        if (Objects.isNull(updatedAt)) updatedAt = LocalDateTime.now();
+    }
 
     public enum Genre {
         FRICTION, THRILLER, MYSTERY, POETRY, HORROR, SATIRE

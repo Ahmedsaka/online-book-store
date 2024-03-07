@@ -1,6 +1,6 @@
 package com.interswitch.onlinebookstore.user.service;
 
-import com.interswitch.onlinebookstore.user.entity.User;
+import com.interswitch.onlinebookstore.user.entity.UserEntity;
 import com.interswitch.onlinebookstore.user.model.UserDataResponse;
 import com.interswitch.onlinebookstore.user.model.UserRequest;
 import com.interswitch.onlinebookstore.user.repository.UserRepository;
@@ -43,22 +43,22 @@ public class UserService implements UserDetailsService {
 
     @UtilityClass
     public static class UserMapper {
-        public static UserDataResponse toUserDataResponse(User user) {
+        public static UserDataResponse toUserDataResponse(UserEntity userEntity) {
             return UserDataResponse.builder()
-                    .email(user.getEmail())
-                    .firstName(user.getFirstName())
-                    .username(user.getUsername())
-                    .lastName(user.getLastName())
-                    .shippingAddress(user.getShippingAddress())
-                    .phoneNumber(user.getPhoneNumber())
-                    .id(user.getIdentifier())
-                    .createdDate(user.getCreatedAt())
-                    .lastUpdatedDate(user.getUpdatedAt())
+                    .email(userEntity.getEmail())
+                    .firstName(userEntity.getFirstName())
+                    .username(userEntity.getUsername())
+                    .lastName(userEntity.getLastName())
+                    .shippingAddress(userEntity.getShippingAddress())
+                    .phoneNumber(userEntity.getPhoneNumber())
+                    .id(userEntity.getIdentifier())
+                    .createdDate(userEntity.getCreatedAt())
+                    .lastUpdatedDate(userEntity.getUpdatedAt())
                     .build();
         }
 
-        public static User toUserEntity(UserRequest userRequest) {
-            return User.builder()
+        public static UserEntity toUserEntity(UserRequest userRequest) {
+            return UserEntity.builder()
                     .email(userRequest.getEmail())
                     .accountNonExpired(true)
                     .credentialsNonExpired(true)

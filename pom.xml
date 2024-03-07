@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.interswitch</groupId>
-    <artifactId>online-book-store</artifactId>
+    <artifactId>online-bookEntity-store</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>online-book-store</name>
-    <description>online-book-store</description>
+    <name>online-bookEntity-store</name>
+    <description>online-bookEntity-store</description>
     <properties>
         <java.version>21</java.version>
         <querydsl.version>5.0.0</querydsl.version>

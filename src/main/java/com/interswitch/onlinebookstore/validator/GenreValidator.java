@@ -1,6 +1,6 @@
 package com.interswitch.onlinebookstore.validator;
 
-import com.interswitch.onlinebookstore.inventory.entity.BookInventory;
+import com.interswitch.onlinebookstore.inventory.entity.BookEntity;
 import com.interswitch.onlinebookstore.validator.annotation.ValidGenre;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
@@ -23,6 +23,6 @@ public class GenreValidator implements ConstraintValidator<ValidGenre, String> {
         if (Objects.isNull(genre) && BooleanUtils.isFalse(nullCheck)) {
             return true;
         }
-        return EnumUtils.getEnumList(BookInventory.Genre.class).stream().anyMatch(x -> x.name().equals(genre.toUpperCase()));
+        return EnumUtils.getEnumList(BookEntity.Genre.class).stream().anyMatch(x -> x.name().equals(genre.toUpperCase()));
     }
 }

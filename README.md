@@ -1,6 +1,6 @@
 # Online Book Store
 
-This project is a Bookstore API developed using Spring Boot. It provides endpoints to manage books and book categories.
+This project is a Bookstore API developed using Spring Boot. It provides endpoints to manage books and bookEntity categories.
 
 ## Endpoints
 
@@ -16,19 +16,28 @@ This project is a Bookstore API developed using Spring Boot. It provides endpoin
   "yearOfPublication": "1951"
   }
     - `limit`: Optional query parameter to specify the maximum number of categories to retrieve (default is 10).
-- **Response:** Returns a list of book categories along with their details.
+- **Response:** Returns a list of bookEntity categories along with their details.
 
-### Authenticate User
+### Add book order to cart
 
-- **URL:** `/v1/auth`
+- **URL:** `/v1/orders`
 - **Method:** POST
-- **Description:** Used to authenticate and generate access token for user to access an authenticated endpoint.
+- **Description:** This an authenticated endpoint with is used to add a book to cart.
 - **Request Body:** {
-  "username": "username",
-  "password": "password"
+  "bookId": "861be649-e4be-4424-b50e-c596e14e9969",
+  "quantity": 1
   }
-- **Response:** Returns access token to the user.
+- **Header:** Bearer Token: "token"
+- **Response:** Returns cart containing books added by the logged in user.
 
+
+### View book(s) in cart
+
+- **URL:** `/v1/orders`
+- **Method:** GET
+- **Description:** This an authenticated endpoint with is used to view cart content.
+- **Header:** Bearer Token: "token"
+- **Response:** Returns cart containing books added by the logged in user.
 
 ## Technologies Used
 
