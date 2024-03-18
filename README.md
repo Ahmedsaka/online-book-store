@@ -79,7 +79,7 @@ This project is a Bookstore API developed using Spring Boot. It provides endpoin
 
 ## Technologies Used
 
-- Java
+- Java 21
 - Spring Boot
 - Spring Web
 - Project Lombok
