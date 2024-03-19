@@ -34,6 +34,8 @@ public class SecurityConfig {
                 .and()
                 .authorizeHttpRequests().requestMatchers(HttpMethod.POST, "/v1/books/search").permitAll()
                 .and()
+                .authorizeHttpRequests().requestMatchers(HttpMethod.GET, "/v1/books").permitAll()
+                .and()
                 .authorizeHttpRequests().requestMatchers(HttpMethod.POST, "/v1/auth/signup").permitAll()
                 .anyRequest().authenticated()
                 .and()
